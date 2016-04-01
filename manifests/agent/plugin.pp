@@ -7,7 +7,7 @@ define check_mk::agent::plugin (
 ) {
 	package { "${package_name}":
       ensure   => present,
-      require => Package["$check_mk::agent::install::package_name"],
+      require => Package[$check_mk::agent::install::package_name],
     }
 	
 	if $config_file {

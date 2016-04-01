@@ -2,13 +2,13 @@ class check_mk::agent (
   $filestore    = undef,
   $host_tags    = undef,
   $ip_whitelist = undef,
-  $port         = '6556',
+  $port         = $::check_mk::params::agent_port,
   $server_dir   = '/usr/bin',
   $use_cache    = false,
-  $user         = 'root',
+  $user         = $::check_mk::params::agent_user,
   $version      = undef,
-  $workspace    = '/root/check_mk',
-) {
+  $workspace    = $::check_mk::params::workspace,
+) inherits ::check_mk::params {
   class { 'check_mk::agent::install':
     version   => $version,
     filestore => $filestore,
